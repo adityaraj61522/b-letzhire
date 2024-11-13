@@ -1,0 +1,19 @@
+{
+  "name": "b-letzhire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityaraj61522/b-letzhire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adityaraj61522/b-letzhire/issues"
+  },
+  "homepage": "https://github.com/adityaraj61522/b-letzhire#readme"
+}
