@@ -3,10 +3,11 @@ const AdmZip = require('adm-zip');
 const pdfParse = require('pdf-parse');
 const fs = require('fs/promises');
 const path = require('path');
+const geminiAPIController = require('./geminieController');
 
 exports.uploadResumes = async (req, res) => {
     const uploadedZipPath = req.file?.path;
-    const extractedFolderPath = path.join('uploads', req.file?.filename);
+    // const extractedFolderPath = path.join('uploads', req.file?.filename);
 
     if (!uploadedZipPath) {
         return res.status(400).json({ error: 'No file uploaded.' });
@@ -22,8 +23,10 @@ exports.uploadResumes = async (req, res) => {
         // Step 4: Cleanup files
         await cleanupFiles([uploadedZipPath, ...pdfPaths]);
 
+
+        let geminaiRes = await geminiAPIController(pdfTexts[0].toString());
         // Step 5: Return the extracted text
-        res.json({ pdfTexts });
+        res.json({ geminaiRes });
     } catch (error) {
         const rcaMessage = error instanceof Error ? error.message : 'Unknown error';
         res.status(500).json({ error: rcaMessage });
